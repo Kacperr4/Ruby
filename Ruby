@@ -1,0 +1,35 @@
+# Hash przechowujący oceny ucznia dla różnych przedmiotów
+dzienniczek = {
+  'matematyka' => [5, 4, 3, 5],
+  'polski' => [3, 4, 3, 4, 5],
+  'historia' => [4, 5, 4],
+  'biologia' => [2, 3, 4, 3],
+  'informatyka' => [5, 5, 5, 4]
+}
+
+# Funkcja do wyświetlania ocen z danego przedmiotu
+def wyswietl_oceny(dzienniczek, przedmiot)
+  if dzienniczek.key?(przedmiot)
+    puts "Oceny z #{przedmiot}: #{dzienniczek[przedmiot].join(', ')}"
+  else
+    puts "Nie znaleziono przedmiotu: #{przedmiot}"
+  end
+end
+
+# Funkcja do obliczania średniej ocen z danego przedmiotu
+def srednia_ocen(dzienniczek, przedmiot)
+  if dzienniczek.key?(przedmiot)
+    srednia = dzienniczek[przedmiot].sum.to_f / dzienniczek[przedmiot].size
+    puts "Średnia ocen z #{przedmiot}: #{'%.2f' % srednia}"
+  else
+    puts "Nie znaleziono przedmiotu: #{przedmiot}"
+  end
+end
+
+# Przykłady działania:
+puts "=== Dzienniczek ucznia ==="
+puts "Podaj nazwę przedmiotu:"
+przedmiot = gets.chomp.downcase  # Pobranie nazwy przedmiotu od użytkownika
+
+wyswietl_oceny(dzienniczek, przedmiot)
+srednia_ocen(dzienniczek, przedmiot)
