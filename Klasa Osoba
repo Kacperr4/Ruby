@@ -1,0 +1,41 @@
+//Zad.06. Stwórz klasę Osoba z następującymi metodami:
+        .initialize - obowiązkowa metoda tworząca nowy obiekt tej klasy
+        .imie - wyświetla na ekranie imie tej osoby
+        .nazwisko - j.w. nazwisko
+  //      .to_s - metoda "to_string" wyświetla imię i nazwisko
+
+# Definicja klasy Osoba
+class Osoba
+  # Konstruktor (initialize) – tworzy nowy obiekt z imieniem i nazwiskiem
+  def initialize(imie, nazwisko)
+    @imie = imie       # Zmienna instancji @imie przechowuje imię
+    @nazwisko = nazwisko # Zmienna instancji @nazwisko przechowuje nazwisko
+  end
+
+  # Metoda zwracająca imię
+  def imie
+    @imie
+  end
+
+  # Metoda zwracająca nazwisko
+  def nazwisko
+    @nazwisko
+  end
+
+  # Metoda to_s – zwraca pełne dane w formie stringa
+  def to_s
+    "#{@imie} #{@nazwisko}"
+  end
+end
+
+# ===================
+# Przykładowe użycie
+# ===================
+
+# Tworzenie nowego obiektu klasy Osoba
+osoba1 = Osoba.new("Jan", "Kowalski")
+
+# Wyświetlenie danych osoby
+puts "Imię: #{osoba1.imie}"      # => Imię: Jan
+puts "Nazwisko: #{osoba1.nazwisko}" # => Nazwisko: Kowalski
+puts "Osoba: #{osoba1}"         # => Osoba: Jan Kowalski
