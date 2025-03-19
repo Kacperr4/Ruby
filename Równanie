@@ -1,0 +1,38 @@
+# Funkcja rozwiązująca równanie kwadratowe
+def rozwiaz_rownanie_kwadratowe(a, b, c)
+  # Obliczamy deltę: Δ = b² - 4ac
+  delta = b**2 - 4 * a * c
+
+  puts "Rozwiązujemy równanie: #{a}x² + #{b}x + #{c} = 0"
+  puts "Delta: #{delta}"
+
+  if delta > 0
+    # Dwa różne pierwiastki
+    x1 = (-b - Math.sqrt(delta)) / (2.0 * a)
+    x2 = (-b + Math.sqrt(delta)) / (2.0 * a)
+    puts "Dwa pierwiastki: x1 = #{'%.2f' % x1}, x2 = #{'%.2f' % x2}"
+  elsif delta == 0
+    # Jeden pierwiastek (podwójny)
+    x0 = -b / (2.0 * a)
+    puts "Jeden pierwiastek podwójny: x0 = #{'%.2f' % x0}"
+  else
+    # Brak pierwiastków rzeczywistych
+    puts "Brak pierwiastków rzeczywistych."
+  end
+end
+
+# Pobieranie wartości od użytkownika
+puts "Podaj współczynniki a, b, c dla równania kwadratowego ax² + bx + c = 0:"
+print "a = "
+a = gets.to_f
+print "b = "
+b = gets.to_f
+print "c = "
+c = gets.to_f
+
+# Sprawdzamy, czy a ≠ 0, bo inaczej to nie jest równanie kwadratowe
+if a == 0
+  puts "To nie jest równanie kwadratowe (a nie może być 0)."
+else
+  rozwiaz_rownanie_kwadratowe(a, b, c)
+end
