@@ -27,3 +27,16 @@ puts "Silnia z #{liczba} wynosi: #{silnia(liczba)}"
 Przykład wywołania w terminalu:
 
 ruby silnia.rb 5
+
+
+
+💡 Alternatywa: Iteracyjna wersja silnia
+Jeśli nie chcesz używać rekurencji, można napisać wersję iteracyjną:
+
+
+def silnia_iteracyjna(n)
+  return nil if n < 0
+  wynik = 1
+  (1..n).each { |i| wynik *= i }
+  wynik
+end
