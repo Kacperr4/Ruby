@@ -1,0 +1,45 @@
+//Zad.07. Zaimplementuj drzewo genealogiczne po męskiej linii z
+możliwością znalezienie dziadka dla podanego wnuka.
+# Klasa Osoba przechowująca informacje o osobach w drzewie
+class Osoba
+  attr_reader :imie, :ojciec
+
+  # Konstruktor – tworzy nową osobę
+  def initialize(imie, ojciec = nil)
+    @imie = imie     # Imię osoby
+    @ojciec = ojciec # Ojciec tej osoby (jeśli jest znany)
+  end
+
+  # Metoda zwracająca dziadka danej osoby
+  def dziadek
+    return nil unless ojciec  # Sprawdza, czy osoba ma ojca
+    return ojciec.ojciec      # Jeśli ojciec istnieje, zwraca jego ojca (dziadka)
+  end
+end
+
+# ===================
+# Tworzenie drzewa genealogicznego
+# ===================
+jan = Osoba.new("Jan")              # Pierwsza generacja
+adam = Osoba.new("Adam", jan)        # Adam to syn Jana
+piotr = Osoba.new("Piotr", adam)     # Piotr to syn Adama
+marek = Osoba.new("Marek", piotr)    # Marek to syn Piotra
+
+# ===================
+# Wyszukiwanie dziadka
+# ===================
+def znajdz_dziadka(wnuk)
+  dziadek = wnuk.dziadek
+  if dziadek
+    puts "Dziadek #{wnuk.imie} to #{dziadek.imie}."
+  else
+    puts "#{wnuk.imie} nie ma zarejestrowanego dziadka."
+  end
+end
+
+# ===================
+# Przykłady działania
+# ===================
+znajdz_dziadka(marek) # Powinno zwrócić: Dziadek Marek to Adam
+znajdz_dziadka(piotr) # Powinno zwrócić: Dziadek Piotr to Jan
+znajdz_dziadka(adam)  # Powinno zwrócić: Adam nie ma zarejestrowanego dziadka
