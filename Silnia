@@ -1,0 +1,29 @@
+# Funkcja rekurencyjna do obliczania silni
+def silnia(n)
+  if n < 0
+    puts "Silnia jest zdefiniowana tylko dla liczb >= 0!"
+    return nil
+  elsif n == 0 || n == 1
+    return 1
+  else
+    return n * silnia(n - 1)
+  end
+end
+
+# Sprawdzenie, czy podano argument
+if ARGV.empty?
+  puts "Podaj liczbę jako argument wywołania programu!"
+  exit
+end
+
+# Pobranie argumentu i konwersja na liczbę całkowitą
+liczba = ARGV[0].to_i
+
+# Obliczenie i wyświetlenie wyniku
+puts "Silnia z #{liczba} wynosi: #{silnia(liczba)}"
+
+
+
+Przykład wywołania w terminalu:
+
+ruby silnia.rb 5
